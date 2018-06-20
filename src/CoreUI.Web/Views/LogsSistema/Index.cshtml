@@ -1,0 +1,59 @@
+﻿@model LogsListViewModel
+
+@{
+    ViewData["Title"] = "Histórico de Ações";
+}
+
+<h2>Histórico de Ações</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-light">Novo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LogSistemaP.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LogSistemaP.Usuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LogSistemaP.DataHoraEvento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LogSistemaP.Categoria)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.LogsSistema)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataHoraEvento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoria)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Apagar</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true"
+     page-class="btn" page-class-normal="btn-secondary"
+     page-class-selected="btn-primary" class="btn-group pull-right m-1">
+</div>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Almoxarifado>
+
+<div class="row my-3 px-3">
+    <a asp-action="AddAlmoxarifado" class="btn btn-primary btn-sm">
+        <i class="fa fa-plus"></i>
+    </a>
+    <h6 class="px-2">Almoxarifados</h6>
+</div>
+
+<table class="table table-bordered table-sm">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(p => p.Single().Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(p => p.Single().Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(p => p.Single().Localizacao.Codigo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Localizacao.Codigo)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Apagar</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

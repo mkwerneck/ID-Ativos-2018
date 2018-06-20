@@ -1,0 +1,41 @@
+﻿@model CoreUI.Web.Models.LogSistema
+
+@{
+    ViewData["Title"] = "Histórico de Ações";
+}
+
+<h2>Criar Novo</h2>
+
+<form method="post" asp-action="New">
+
+    @Html.DisplayNameFor(log => log.Descricao)
+    <br />
+    @Html.TextBoxFor(log => log.Descricao)
+    <br />
+    <span class="text-danger">@Html.ValidationMessageFor(log => log.Descricao)</span>   
+    <br />
+
+    @Html.DisplayNameFor(log => log.Usuario)
+    <br />
+    @Html.TextBoxFor(log => log.Usuario)
+    <br />
+    <span class="text-danger">@Html.ValidationMessageFor(log => log.Usuario)</span>
+    <br />
+
+    @Html.DisplayNameFor(log => log.Categoria)
+    <br />
+    @Html.TextBoxFor(log => log.Categoria)
+    <br />
+    <span class="text-danger">@Html.ValidationMessageFor(log => log.Categoria)</span>   
+    <br />
+
+    @Html.DisplayNameFor(log => log.DataHoraEvento)
+    <br />
+    @Html.TextBoxFor(log => log.DataHoraEvento)
+    <br />
+    <span class="text-danger">@Html.ValidationMessageFor(log => log.DataHoraEvento)</span>   
+    <br />
+
+    <input type="submit" value="New"/>
+
+</form>

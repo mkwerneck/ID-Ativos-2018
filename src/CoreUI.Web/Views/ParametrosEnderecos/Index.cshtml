@@ -1,0 +1,47 @@
+﻿@model ParametrosEnderecosViewModel
+
+@{
+    ViewData["Title"] = "Parametros - Enderecos";
+}
+
+<div class="col">
+    <div class="row">
+
+        <div class="col-md-4 table-responsive">
+            <div>
+                @Html.Partial("ListPaises", Model.PaisListViewModel.Paises)
+            </div>
+            <div page-model="@Model.PaisListViewModel.PagingInfo" page-action="Index" page-classes-enabled="true"
+                 page-class="btn btn-sm" page-class-normal="btn-light"
+                 page-class-selected="btn-primary" class="btn-group m-1">
+            </div>
+        </div>
+
+        <div class="col-md-4 table-responsive">
+            @Html.Partial("ListEstados", Model.Estados)
+        </div>
+
+        <div class="col-md-4 table-responsive">
+            @Html.Partial("ListCidades", Model.Cidades)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 table-responsive">
+            @Html.Partial("ListTAGIDPosicoes", Model.TAGIDPosicoes)
+        </div>
+
+        <div class="col-md-4 table-responsive">
+            @Html.Partial("ListPosicoes", Model.Posicoes)
+        </div>
+
+        <div class="col-md-4 table-responsive">
+            @Html.Partial("ListAlmoxarifados", Model.Almoxarifados)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 table-responsive">
+            @Html.Partial("ListLocalizacoes", Model.Localizacoes)
+        </div>
+    </div>
+</div>
+

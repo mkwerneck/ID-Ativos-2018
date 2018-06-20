@@ -1,0 +1,48 @@
+﻿@model CoreUI.Web.Models.LogSistema
+
+@{
+    ViewData["Title"] = "Histórico de Ações";
+}
+
+<h2>Log - Histórico de Ações</h2>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <td>
+            @Html.DisplayFor(model => model.Descricao)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario)
+        </th>
+        <td>
+            @Html.DisplayFor(model => model.Usuario)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Categoria)
+        </th>
+        <td>
+            @Html.DisplayFor(model => model.Categoria)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DataHoraEvento)
+        </th>
+        <td>
+            @Html.DisplayFor(model => model.DataHoraEvento)
+        </td>
+    </tr>
+
+</table>
+<p></p>
+<div>
+    <a asp-action="Edit" asp-route-id=@Model.Id>Editar</a> |
+    <a asp-action="Delete" asp-route-id=@Model.Id>Apagar</a>
+</div>

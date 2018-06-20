@@ -1,0 +1,35 @@
+﻿@model CoreUI.Web.Models.LogSistema
+
+@{
+    ViewData["Title"] = "Histórico de Ações";
+}
+
+<h2>Editar</h2>
+
+<form method="post" asp-action="Update">
+
+    @Html.HiddenFor(log => log.Id)
+
+    @Html.DisplayNameFor(log => log.Descricao)
+    <br />
+    @Html.TextBoxFor(log => log.Descricao)
+    <br />
+
+    @Html.DisplayNameFor(log => log.Usuario)
+    <br />
+    @Html.TextBoxFor(log => log.Usuario)
+    <br />
+
+    @Html.DisplayNameFor(log => log.Categoria)
+    <br />
+    @Html.TextBoxFor(log => log.Categoria)
+    <br />
+
+    @Html.DisplayNameFor(log => log.DataHoraEvento)
+    <br />
+    @Html.TextBoxFor(log => log.DataHoraEvento)
+    <br />
+
+    <input type="submit" value="Update"/>
+
+</form>

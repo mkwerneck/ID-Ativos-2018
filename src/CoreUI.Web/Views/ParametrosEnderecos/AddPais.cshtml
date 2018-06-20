@@ -1,0 +1,84 @@
+﻿@model AddEditPaisViewModel
+
+@{
+    ViewData["Title"] = "Adicionar Pais";
+}
+
+<h2>Criar Novo</h2>
+
+<form method="post" asp-action="AddPais" enctype="multipart/form-data">
+
+    @Html.DisplayNameFor(p => p.Pais.AbreviacaoPais)
+    <br />
+    @Html.TextBoxFor(p => p.Pais.AbreviacaoPais)
+    <br />
+    <span class="text-danger">@Html.ValidationMessageFor(p => p.Pais.AbreviacaoPais)</span>
+    <br />
+
+    @Html.DisplayNameFor(p => p.Pais.NomePais)
+    <br />
+    @Html.TextBoxFor(p => p.Pais.NomePais)
+    <br />
+    <span class="text-danger">@Html.ValidationMessageFor(p => p.Pais.NomePais)</span>
+    <br />
+
+    @Html.DisplayNameFor(p => p.Imagem)
+    <div class="btn btn-primary">
+        <input type="file" id="imageBrowse" name="Imagem" />
+    </div>
+    <div class="col-md-4">
+        <div id="imgPreview" class="img-thumbnail" style="display:none">
+            <img class="img-thumbnail" id="targetImg"/>
+            <div class="figure-caption">
+                <a href="#" onclick="ClearPreview()"><i class="fa fa-minus"></i></a>
+                <p id="description"></p>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <input type="submit" value="Salvar" />
+
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function () { 
+
+        $("#imageBrowse").change(function () { 
+            var File = this.file;
+            if (File && File[0]) { 
+                ReadImage(File[0]);
+            }
+        })
+
+    })
+
+    var ReadImage = function (file) { 
+        var reader = new FileReader;
+        var image = new Image;
+
+        reader.readAsDataURL(file);
+        reader.onload = function (_file) { 
+            image.src = _file.target.result;
+            iamge.onload = function () { 
+                var height = this.height;
+                var width = this.width;
+                var type = file.type;
+                var size = ~~(file.size / 1024) + "KB";
+
+                $("#targetImg").attr('src', _file.target.result);
+                $("#description").text("Size: " + size + ", " + height + " X " + width + "");
+                $("#imgPreview").show();
+            }
+        }
+    }
+
+    var ClearPreview = function () { 
+        $("#targetImg").val('');
+        $("#description").text('');
+        $("#imgPreview").hide();
+    }
+
+</script>

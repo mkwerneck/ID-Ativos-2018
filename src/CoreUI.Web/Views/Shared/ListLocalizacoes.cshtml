@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Localizacao>
+
+<div class="row my-3 px-3">
+    <a asp-action="AddLocalizacao" class="btn btn-primary btn-sm">
+        <i class="fa fa-plus"></i>
+    </a>
+    <h6 class="px-2">Localizações</h6>
+</div>
+
+<table class="table table-bordered table-sm">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(p => p.Single().Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(p => p.Single().Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(p => p.Single().Empresa.NomeFantasia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(p => p.Single().Endereco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(p => p.Single().Cidade.NomeCidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(p => p.Single().Estado.NomeEstado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(p => p.Single().Pais.NomePais)
+            </th>
+            <th>
+                @Html.DisplayNameFor(p => p.Single().Latitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(p => p.Single().Longitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(p => p.Single().RaioLocalizacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(p => p.Single().MapData)
+            </th>
+            <th>
+                @Html.DisplayNameFor(p => p.Single().Bairro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(p => p.Single().CEP)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empresa.NomeFantasia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endereco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cidade.NomeCidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado.NomeEstado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Latitude)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Longitude)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RaioLocalizacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MapData)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RaioLocalizacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bairro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CEP)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Apagar</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

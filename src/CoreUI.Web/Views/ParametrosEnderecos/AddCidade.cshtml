@@ -1,0 +1,27 @@
+﻿@model AddEditCidadeViewModel
+
+@{
+    ViewData["Title"] = "Adicionar Cidade";
+}
+
+<h2>Criar Novo</h2>
+
+<form method="post" asp-action="AddCidade">
+
+    @Html.DisplayNameFor(p => p.Cidade.NomeCidade)
+    <br />
+    @Html.TextBoxFor(p => p.Cidade.NomeCidade)
+    <br />
+    <span class="text-danger">@Html.ValidationMessageFor(p => p.Cidade.NomeCidade)</span>
+    <br />
+
+    @Html.DisplayNameFor(p => p.Cidade.Estado)
+    <br />
+    @Html.DropDownListFor(p => p.Cidade.EstadoId, new SelectList(Model.Estados.ToList(), "Id", "NomeEstado"))
+    <br />
+    <span class="text-danger">@Html.ValidationMessageFor(p => p.Cidade.EstadoId)</span>
+    <br />
+
+    <input type="submit" value="Salvar" />
+
+</form>

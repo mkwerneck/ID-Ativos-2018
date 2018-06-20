@@ -1,0 +1,34 @@
+﻿@model AddEditEstadoViewModel
+
+@{
+    ViewData["Title"] = "Adicionar Pais";
+}
+
+<h2>Criar Novo</h2>
+
+<form method="post" asp-action="AddEstado">
+
+    @Html.DisplayNameFor(p => p.Estado.CodigoEstado)
+    <br />
+    @Html.TextBoxFor(p => p.Estado.CodigoEstado)
+    <br />
+    <span class="text-danger">@Html.ValidationMessageFor(p => p.Estado.CodigoEstado)</span>
+    <br />
+
+    @Html.DisplayNameFor(p => p.Estado.NomeEstado)
+    <br />
+    @Html.TextBoxFor(p => p.Estado.NomeEstado)
+    <br />
+    <span class="text-danger">@Html.ValidationMessageFor(p => p.Estado.NomeEstado)</span>
+    <br />
+
+    @Html.DisplayNameFor(p => p.Estado.Pais)
+    <br />
+    @Html.DropDownListFor(p => p.Estado.PaisId, new SelectList(Model.Paises.ToList(), "Id", "NomePais"))
+    <br />
+    <span class="text-danger">@Html.ValidationMessageFor(p => p.Estado.Pais)</span>
+    <br />
+
+    <input type="submit" value="Salvar" />
+
+</form>

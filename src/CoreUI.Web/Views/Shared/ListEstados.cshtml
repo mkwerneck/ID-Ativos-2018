@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Estado>
+
+<div class="row my-3 px-3">
+    <a asp-action="AddEstado" class="btn btn-primary btn-sm">
+        <i class="fa fa-plus"></i>
+    </a>
+    <h6 class="px-2">Estados</h6>
+</div>
+
+<table class="table table-bordered table-sm">
+    <thead class="thead-light">
+        <tr>
+            <th class="custom-header">
+                Estado
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeEstado)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
+                        <i class="fa fa-minus"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
