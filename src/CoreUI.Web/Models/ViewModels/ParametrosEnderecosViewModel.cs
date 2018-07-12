@@ -4,7 +4,7 @@ namespace CoreUI.Web.Models.ViewModels
 {
     public class ParametrosEnderecosViewModel
     {
-        public IEnumerable<Estado> Estados { get; set; }
+        public EstadoListViewModel EstadoListViewModel { get; set; }
         public PaisListViewModel PaisListViewModel { get; set; }
         public IEnumerable<Cidade> Cidades { get; set; }
         public IEnumerable<TAGIDPosicao> TAGIDPosicoes { get; set; }

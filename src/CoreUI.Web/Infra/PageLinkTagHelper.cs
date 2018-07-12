@@ -19,6 +19,7 @@ namespace CoreUI.Web.Infra
         public ViewContext ViewContext { get; set; }
         public PagingInfo PageModel { get; set; }
         public string PageAction { get; set; }
+        public string PageAttribute { get; set; }
 
         public bool PageClassesEnabled { get; set; } = false;
         public string PageClass { get; set; }
@@ -33,8 +34,23 @@ namespace CoreUI.Web.Infra
             for (int i = 1; i <= PageModel.TotalPages; i++)
             {
                 TagBuilder tag = new TagBuilder("a");
-                tag.Attributes["href"] = urlHelper.Action(PageAction,
-                   new { page = i });
+
+                switch (PageAttribute) {
+                    case "pais":
+                        tag.Attributes["href"] = urlHelper.Action(PageAction,
+                            new { pagePais = i });
+                        break;
+                    case "estado":
+                        tag.Attributes["href"] = urlHelper.Action(PageAction,
+                            new { pageEstado = i });
+                        break;
+                    case "cidade":
+                        tag.Attributes["href"] = urlHelper.Action(PageAction,
+                            new { pageCidade = i });
+                        break;
+                }
+
+               
                 if (PageClassesEnabled)
                 {
                     tag.AddCssClass(PageClass);

@@ -11,14 +11,20 @@
             <div>
                 @Html.Partial("ListPaises", Model.PaisListViewModel.Paises)
             </div>
-            <div page-model="@Model.PaisListViewModel.PagingInfo" page-action="Index" page-classes-enabled="true"
+            <div page-model="@Model.PaisListViewModel.PagingInfo" page-action="Index" page-attribute="pais" page-classes-enabled="true"
                  page-class="btn btn-sm" page-class-normal="btn-light"
                  page-class-selected="btn-primary" class="btn-group m-1">
             </div>
         </div>
 
         <div class="col-md-4 table-responsive">
-            @Html.Partial("ListEstados", Model.Estados)
+            <div>
+                @Html.Partial("ListEstados", Model.EstadoListViewModel.Estados)
+            </div>
+            <div page-model="@Model.PaisListViewModel.PagingInfo" page-action="Index" page-attribute="estado" page-classes-enabled="true"
+                 page-class="btn btn-sm" page-class-normal="btn-light"
+                 page-class-selected="btn-primary" class="btn-group m-1">
+            </div>
         </div>
 
         <div class="col-md-4 table-responsive">

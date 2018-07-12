@@ -34,7 +34,7 @@ namespace CoreUI.Web.Controllers
             localizacaoDAO = new LocalizacaoDAO(_context);
         }
 
-        public async Task <IActionResult> Index(int page = 1)
+        public async Task <IActionResult> Index(int pagePais = 1, int pageEstado = 1)
         {
             ICollection<Pais> paises = await paisDao.Listar();
             ICollection<Estado> estados = await estadoDAO.Listar();
@@ -47,16 +47,26 @@ namespace CoreUI.Web.Controllers
             return View(new ParametrosEnderecosViewModel {
                 PaisListViewModel = new PaisListViewModel {
                     Paises = paises
-                        .Skip((page - 1) * PageSize)
+                        .Skip((pagePais - 1) * PageSize)
                         .Take(PageSize),
                     PagingInfo = new PagingInfo {
-                        CurrentPage = page,
+                        CurrentPage = pagePais,
                         ItemsPerPage = PageSize,
                         TotalItems = paises.Count()
                     }
                 },
 
-                Estados = estados,
+                EstadoListViewModel = new EstadoListViewModel {
+                    Estados = estados
+                        .Skip((pageEstado - 1) * PageSize)
+                        .Take(PageSize),
+                    PagingInfo = new PagingInfo {
+                        CurrentPage = pageEstado,
+                        ItemsPerPage = PageSize,
+                        TotalItems = paises.Count()
+                    }
+                },
+
                 Cidades = cidades,
                 TAGIDPosicoes = tagidPosicoes,
                 Posicoes = posicoes,
