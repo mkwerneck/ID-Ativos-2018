@@ -1,0 +1,78 @@
+﻿@model Empresa
+
+@{
+    ViewData["Title"] = "Adicionar Novo Empresas";
+}
+
+<form method="post" asp-action="AddEmpresa" enctype="multipart/form-data">
+
+    <div class="card">
+        <div class="card-header">
+            <strong>Adicionar Novo Empresas</strong>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label asp-for="NomeFantasia" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="NomeFantasia" class="form-control" />
+                    <span asp-validation-for="NomeFantasia" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="RazaoSocial" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="RazaoSocial" class="form-control" />
+                    <span asp-validation-for="RazaoSocial" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CNPJ" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="CNPJ" class="form-control" />
+                    <span asp-validation-for="CNPJ" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="InscricaoEstadual" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="InscricaoEstadual" class="form-control" />
+                    <span asp-validation-for="InscricaoEstadual" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="InscricaoMunicipal" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="InscricaoMunicipal" class="form-control" />
+                    <span asp-validation-for="InscricaoMunicipal" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CNAE" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="CNAE" class="form-control" />
+                    <span asp-validation-for="CNAE" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CRT" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="CRT" class="form-control" />
+                    <span asp-validation-for="CRT" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="OK" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+</form>

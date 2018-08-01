@@ -61,7 +61,7 @@ namespace CoreUI.Web.Models
         public String senhaAD { get; set; }
 
         [ForeignKey("Localizacao")]
-        public int LocalizacaoId { get; set; }
+        public int? LocalizacaoId { get; set; }
         public virtual Localizacao Localizacao { get; set; }
 
     }

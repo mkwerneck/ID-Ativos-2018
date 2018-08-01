@@ -11,8 +11,8 @@ using System;
 namespace CoreUI.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180526002115_Initial")]
-    partial class Initial
+    [Migration("20180801125933_ParameterosCorporativosVersion4")]
+    partial class ParameterosCorporativosVersion4
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -99,6 +99,64 @@ namespace CoreUI.Web.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("CoreUI.Web.Models.CategoriaEmail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Assunto")
+                        .IsRequired()
+                        .HasColumnName("Assunto_Email")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("EmailDestinatario")
+                        .IsRequired()
+                        .HasColumnName("Email_Destinatario")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("EmailRemetente")
+                        .IsRequired()
+                        .HasColumnName("Email_Remetente")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("NomeCategoria")
+                        .IsRequired()
+                        .HasColumnName("Categoria")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("NomeRemetente")
+                        .IsRequired()
+                        .HasColumnName("Nome_Remetente")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("SMTP")
+                        .IsRequired()
+                        .HasMaxLength(255);
+
+                    b.Property<string>("SenhaRemetente")
+                        .IsRequired()
+                        .HasColumnName("Senha_Remetente")
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categoria_Emails");
+                });
+
+            modelBuilder.Entity("CoreUI.Web.Models.CategoriaEquipamentos", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Categoria")
+                        .IsRequired()
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categoria_EquipamentosSet");
+                });
+
             modelBuilder.Entity("CoreUI.Web.Models.Cidade", b =>
                 {
                     b.Property<int>("Id")
@@ -117,18 +175,74 @@ namespace CoreUI.Web.Migrations
                     b.ToTable("Cidades");
                 });
 
+            modelBuilder.Entity("CoreUI.Web.Models.Contrato", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Assigned")
+                        .IsRequired()
+                        .HasMaxLength(255);
+
+                    b.Property<string>("CodCliente")
+                        .IsRequired()
+                        .HasColumnName("Cod_Cliente")
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ContractNameTables");
+                });
+
+            modelBuilder.Entity("CoreUI.Web.Models.Documentacao", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DataCadastro");
+
+                    b.Property<DateTime>("DataCancelado");
+
+                    b.Property<DateTime>("DataEmissao");
+
+                    b.Property<DateTime>("DataImpressao");
+
+                    b.Property<DateTime>("DataValidade");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired();
+
+                    b.Property<long>("NumCertificado");
+
+                    b.Property<string>("NumCertificadoString");
+
+                    b.Property<string>("Obsrevacao");
+
+                    b.Property<string>("Status");
+
+                    b.Property<string>("UsuarioCadastro");
+
+                    b.Property<string>("UsuarioCancelamento");
+
+                    b.Property<string>("UsuarioEmissor");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Documentacaos");
+                });
+
             modelBuilder.Entity("CoreUI.Web.Models.Empresa", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("CNAE");
+                    b.Property<int?>("CNAE");
 
                     b.Property<string>("CNPJ")
                         .IsRequired()
                         .HasMaxLength(255);
 
-                    b.Property<int>("CRT");
+                    b.Property<int?>("CRT");
 
                     b.Property<string>("InscricaoEstadual")
                         .HasMaxLength(255);
@@ -175,17 +289,41 @@ namespace CoreUI.Web.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("EmpresaId");
+                    b.Property<int?>("EmpresaId");
 
                     b.Property<string>("NomeFabricante")
                         .IsRequired()
+                        .HasColumnName("Manufacturer")
                         .HasMaxLength(255);
 
                     b.HasKey("Id");
 
                     b.HasIndex("EmpresaId");
 
-                    b.ToTable("Fabricantes");
+                    b.ToTable("ManufacturerTables");
+                });
+
+            modelBuilder.Entity("CoreUI.Web.Models.Grupo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<decimal?>("CustoOperacionalDiario");
+
+                    b.Property<decimal?>("CustoOperacionalMensal");
+
+                    b.Property<decimal?>("DepreciacaoDiaria");
+
+                    b.Property<decimal?>("DepreciacaoMensal");
+
+                    b.Property<int?>("PermissaoUsuarioId");
+
+                    b.Property<string>("Titulo")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Grupos");
                 });
 
             modelBuilder.Entity("CoreUI.Web.Models.IdentificacaoSistema", b =>
@@ -214,7 +352,7 @@ namespace CoreUI.Web.Migrations
                     b.Property<byte[]>("ImagemPadrao")
                         .HasColumnName("Imagem_Padrao");
 
-                    b.Property<int>("LocalizacaoId");
+                    b.Property<int?>("LocalizacaoId");
 
                     b.Property<byte[]>("LogoMobile")
                         .HasColumnName("Logo_MOBILE");
@@ -343,6 +481,8 @@ namespace CoreUI.Web.Migrations
                         .IsRequired()
                         .HasMaxLength(255);
 
+                    b.Property<byte[]>("Imagem");
+
                     b.Property<string>("NomePais")
                         .IsRequired()
                         .HasMaxLength(255);
@@ -350,6 +490,88 @@ namespace CoreUI.Web.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Paises");
+                });
+
+            modelBuilder.Entity("CoreUI.Web.Models.Permissao", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("NomePermissao")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Permissoes");
+                });
+
+            modelBuilder.Entity("CoreUI.Web.Models.PermissaoHabilitacao", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CategoriaEquipamentosId");
+
+                    b.Property<int>("EmpresaId");
+
+                    b.Property<bool>("FlagTodasCategorias");
+
+                    b.Property<bool>("FlagTodasEmpresasEquipamentos");
+
+                    b.Property<bool>("FlagTodosGrupos");
+
+                    b.Property<bool>("FlagTodosProprietarios");
+
+                    b.Property<int>("GrupoId");
+
+                    b.Property<int>("PermissaoId");
+
+                    b.Property<int>("SetorProprietarioId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoriaEquipamentosId");
+
+                    b.HasIndex("EmpresaId");
+
+                    b.HasIndex("GrupoId");
+
+                    b.HasIndex("PermissaoId");
+
+                    b.HasIndex("SetorProprietarioId");
+
+                    b.ToTable("PermissoesHabilitacao");
+                });
+
+            modelBuilder.Entity("CoreUI.Web.Models.PermissaoUsuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<float?>("DuracaoExpediente");
+
+                    b.Property<string>("EmailUsuario");
+
+                    b.Property<int?>("GrupoId");
+
+                    b.Property<string>("NomeCompleto");
+
+                    b.Property<int>("PermissaoId");
+
+                    b.Property<string>("TAGID");
+
+                    b.Property<string>("Usuario")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GrupoId")
+                        .IsUnique()
+                        .HasFilter("[GrupoId] IS NOT NULL");
+
+                    b.HasIndex("PermissaoId");
+
+                    b.ToTable("PermissoesUsuario");
                 });
 
             modelBuilder.Entity("CoreUI.Web.Models.Posicao", b =>
@@ -374,6 +596,56 @@ namespace CoreUI.Web.Migrations
                     b.HasIndex("AlmoxarifadoId");
 
                     b.ToTable("PosicaoTables");
+                });
+
+            modelBuilder.Entity("CoreUI.Web.Models.PurchaseOrder", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("PO")
+                        .IsRequired()
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PurchaseOrderTables");
+                });
+
+            modelBuilder.Entity("CoreUI.Web.Models.Requisicao", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("RQ")
+                        .IsRequired()
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RequisiçãoTableSet");
+                });
+
+            modelBuilder.Entity("CoreUI.Web.Models.SendEmail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CategoriaEmailId");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(255);
+
+                    b.Property<string>("Identificacao")
+                        .IsRequired()
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoriaEmailId");
+
+                    b.ToTable("Send_Emails");
                 });
 
             modelBuilder.Entity("CoreUI.Web.Models.SetorProprietario", b =>
@@ -558,16 +830,14 @@ namespace CoreUI.Web.Migrations
                 {
                     b.HasOne("CoreUI.Web.Models.Empresa", "Empresa")
                         .WithMany()
-                        .HasForeignKey("EmpresaId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("EmpresaId");
                 });
 
             modelBuilder.Entity("CoreUI.Web.Models.IdentificacaoSistema", b =>
                 {
                     b.HasOne("CoreUI.Web.Models.Localizacao", "Localizacao")
                         .WithMany()
-                        .HasForeignKey("LocalizacaoId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("LocalizacaoId");
                 });
 
             modelBuilder.Entity("CoreUI.Web.Models.Localizacao", b =>
@@ -593,11 +863,59 @@ namespace CoreUI.Web.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
+            modelBuilder.Entity("CoreUI.Web.Models.PermissaoHabilitacao", b =>
+                {
+                    b.HasOne("CoreUI.Web.Models.CategoriaEquipamentos", "CategoriaEquipamentos")
+                        .WithMany()
+                        .HasForeignKey("CategoriaEquipamentosId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CoreUI.Web.Models.Empresa", "Empresa")
+                        .WithMany()
+                        .HasForeignKey("EmpresaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CoreUI.Web.Models.Grupo", "Grupo")
+                        .WithMany()
+                        .HasForeignKey("GrupoId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CoreUI.Web.Models.Permissao", "Permissao")
+                        .WithMany()
+                        .HasForeignKey("PermissaoId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CoreUI.Web.Models.SetorProprietario", "SetorProprietario")
+                        .WithMany()
+                        .HasForeignKey("SetorProprietarioId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("CoreUI.Web.Models.PermissaoUsuario", b =>
+                {
+                    b.HasOne("CoreUI.Web.Models.Grupo", "Grupo")
+                        .WithOne("PermissaoUsuario")
+                        .HasForeignKey("CoreUI.Web.Models.PermissaoUsuario", "GrupoId");
+
+                    b.HasOne("CoreUI.Web.Models.Permissao", "Permissao")
+                        .WithMany()
+                        .HasForeignKey("PermissaoId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("CoreUI.Web.Models.Posicao", b =>
                 {
                     b.HasOne("CoreUI.Web.Models.Almoxarifado", "Almoxarifado")
                         .WithMany()
                         .HasForeignKey("AlmoxarifadoId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CoreUI.Web.Models.SendEmail", b =>
+                {
+                    b.HasOne("CoreUI.Web.Models.CategoriaEmail", "CategoriaEmail")
+                        .WithMany()
+                        .HasForeignKey("CategoriaEmailId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

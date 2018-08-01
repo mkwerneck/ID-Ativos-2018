@@ -17,9 +17,10 @@ namespace CoreUI.Web.DAO
             _context = context;
         }
 
-        public async Task<ICollection<Posicao>> Listar()
+        public async Task<ICollection<Contrato>> Listar()
         {
-            return await _context.Posicoes.ToListAsync();
+            return await _context.Contratos
+                .ToListAsync();
         }
 
         public async Task Create(Contrato contrato)
@@ -38,6 +39,14 @@ namespace CoreUI.Web.DAO
         {
             _context.Update(contrato);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<Contrato> GetById(int? id)
+        {
+            Contrato contrato = await _context.Contratos
+                .AsNoTracking()
+                .SingleOrDefaultAsync(p => p.Id == id);
+            return contrato;
         }
 
     }

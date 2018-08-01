@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Requisicao>
+
+<div class="row my-3 px-3">
+    <a asp-action="AddRequisicao" class="btn btn-primary btn-sm">
+        <i class="fa fa-plus"></i>
+    </a>
+</div>
+<div>
+    <div>
+        <i class="fa fa-align-justify"></i>
+        Autorização de Serviço (A.S.)
+    </div>
+    <br />
+    <div>
+        <table class="table table-sm">
+            <thead class="thead-light">
+                <tr>
+                    <th class="nowrap">Ordem Compra</th>
+                    <th class="nowrap"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="nowrap">
+                            @Html.DisplayFor(modelItem => item.RQ)
+                        </td>
+                        <td class="nowrap float-right">
+                            <a asp-action="EditRequisicao" asp-route-id="@item.Id" class="btn btn-info btn-sm">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a asp-action="DeleteRequisicao" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
+                                <i class="fa fa-minus"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style type="text/css">
+    .nowrap {
+        white-space: nowrap;
+    }
+
+    .alnright {
+    }
+</style>

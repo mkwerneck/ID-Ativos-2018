@@ -1,0 +1,59 @@
+﻿@model IEnumerable<SetorProprietario>
+
+<div class="row my-3 px-3">
+    <a asp-action="AddSetor" class="btn btn-primary btn-sm">
+        <i class="fa fa-plus"></i>
+    </a>
+</div>
+<div>
+    <div>
+        <i class="fa fa-align-justify"></i>
+        SETOR - Empresas
+    </div>
+    <br />
+    <div>
+        <table class="table table-sm">
+            <thead class="thead-light">
+                <tr>
+                    <th class="nowrap">Descrição Setor</th>
+                    <th class="nowrap">Empresa</th>
+                    <th class="nowrap">Gestor Responsável</th>
+                    <th class="nowrap"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td class="nowrap">
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
+                    <td class="nowrap">
+                        @Html.DisplayFor(modelItem => item.Empresa.NomeFantasia)
+                    </td>
+                    <td class="nowrap">
+                        @Html.DisplayFor(modelItem => item.Gestor)
+                    </td>
+                    <td class="nowrap float-right">
+                        <a asp-action="EditSetor" asp-route-id="@item.Id" class="btn btn-info btn-sm">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a asp-action="DeleteSetor" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
+                            <i class="fa fa-minus"></i>
+                        </a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style type="text/css">
+    .nowrap {
+        white-space: nowrap;
+    }
+
+    .alnright {
+    }
+</style>

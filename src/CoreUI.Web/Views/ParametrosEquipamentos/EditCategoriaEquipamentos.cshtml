@@ -1,0 +1,30 @@
+﻿@model CategoriaEquipamentos
+
+@{
+    ViewData["Title"] = "Editar Categoria Equipamentos";
+}
+
+<form method="post" asp-action="EditCategoriaEquipamentos" enctype="multipart/form-data">
+
+    <div class="card">
+        <div class="card-header">
+            <strong>Editar Categoria Equipamentos</strong>
+        </div>
+        <div class="card-body">
+            <label asp-for="Id"></label>
+            <div class="form-group">
+                <label asp-for="Categoria" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="Categoria" class="form-control" />
+                    <span asp-validation-for="Categoria" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="OK" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,41 @@
+﻿@model Fabricante
+
+@{
+    ViewData["Title"] = "Editar Fabricante";
+}
+
+<form method="post" asp-action="EditFabricante" enctype="multipart/form-data">
+
+    <div class="card">
+        <div class="card-header">
+            <strong>Editar Fabricante</strong>
+        </div>
+        <div class="card-body">
+            <label asp-for="Id"></label>
+            <div class="form-group">
+                <label asp-for="NomeFabricante" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="NomeFabricante" class="form-control" />
+                    <span asp-validation-for="NomeFabricante" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Empresa" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <select asp-for="EmpresaId" class="form-control" asp-items="ViewBag.EmpresaId">
+                        <option value="">--Selecione a Empresa--</option>
+                    </select>
+                    <span asp-validation-for="EmpresaId" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="OK" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+</form>

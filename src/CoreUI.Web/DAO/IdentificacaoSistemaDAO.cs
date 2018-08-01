@@ -17,9 +17,11 @@ namespace CoreUI.Web.DAO
             _context = context;
         }
 
-        public async Task<ICollection<Posicao>> Listar()
+        public async Task<ICollection<IdentificacaoSistema>> Listar()
         {
-            return await _context.Posicoes.ToListAsync();
+            return await _context.IdentificacaoSistemas
+                .Include(p => p.Localizacao)
+                .ToListAsync();
         }
 
         public async Task Create(IdentificacaoSistema identificacaoSistema)
@@ -38,6 +40,15 @@ namespace CoreUI.Web.DAO
         {
             _context.Update(identificacaoSistema);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<IdentificacaoSistema> GetById(int? id)
+        {
+            IdentificacaoSistema identificacaoSistema = await _context.IdentificacaoSistemas
+                .Include(p => p.Localizacao)
+                .AsNoTracking()
+                .SingleOrDefaultAsync(p => p.Id == id);
+            return identificacaoSistema;
         }
     }
 }

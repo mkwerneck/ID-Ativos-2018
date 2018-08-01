@@ -2,6 +2,8 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using CoreUI.Web.Data;
+using CoreUI.Web.DAO;
 
 namespace CoreUI.Web.Models
 {
@@ -35,6 +37,7 @@ namespace CoreUI.Web.Models
 
         [Required]
         public int CategoriaEquipamentosId { get; set; }
-        public virtual CategoriaEquipamentos GetCategoriaEquipamentos { get; set; }
+        public virtual CategoriaEquipamentos CategoriaEquipamentos { get; set; }
+
     }
 }

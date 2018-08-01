@@ -49,6 +49,31 @@ namespace CoreUI.Web.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Documentacaos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    DataCadastro = table.Column<DateTime>(nullable: false),
+                    DataCancelado = table.Column<DateTime>(nullable: false),
+                    DataEmissao = table.Column<DateTime>(nullable: false),
+                    DataImpressao = table.Column<DateTime>(nullable: false),
+                    DataValidade = table.Column<DateTime>(nullable: false),
+                    Descricao = table.Column<string>(nullable: false),
+                    NumCertificado = table.Column<long>(nullable: false),
+                    NumCertificadoString = table.Column<string>(nullable: true),
+                    Obsrevacao = table.Column<string>(nullable: true),
+                    Status = table.Column<string>(nullable: true),
+                    UsuarioCadastro = table.Column<string>(nullable: true),
+                    UsuarioCancelamento = table.Column<string>(nullable: true),
+                    UsuarioEmissor = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Documentacaos", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Empresas",
                 columns: table => new
                 {
@@ -90,6 +115,7 @@ namespace CoreUI.Web.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     AbreviacaoPais = table.Column<string>(maxLength: 255, nullable: false),
+                    Imagem = table.Column<byte[]>(nullable: true),
                     NomePais = table.Column<string>(maxLength: 255, nullable: false)
                 },
                 constraints: table =>
@@ -204,19 +230,19 @@ namespace CoreUI.Web.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Fabricantes",
+                name: "ManufacturerTables",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     EmpresaId = table.Column<int>(nullable: false),
-                    NomeFabricante = table.Column<string>(maxLength: 255, nullable: false)
+                    Manufacturer = table.Column<string>(maxLength: 255, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Fabricantes", x => x.Id);
+                    table.PrimaryKey("PK_ManufacturerTables", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Fabricantes_Empresas_EmpresaId",
+                        name: "FK_ManufacturerTables_Empresas_EmpresaId",
                         column: x => x.EmpresaId,
                         principalTable: "Empresas",
                         principalColumn: "Id",
@@ -504,14 +530,14 @@ namespace CoreUI.Web.Migrations
                 column: "PaisId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Fabricantes_EmpresaId",
-                table: "Fabricantes",
-                column: "EmpresaId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_IDs_Sistemas_LocalizacaoId",
                 table: "IDs_Sistemas",
                 column: "LocalizacaoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ManufacturerTables_EmpresaId",
+                table: "ManufacturerTables",
+                column: "EmpresaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PosicaoTables_AlmoxarifadoId",
@@ -547,13 +573,16 @@ namespace CoreUI.Web.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Fabricantes");
+                name: "Documentacaos");
 
             migrationBuilder.DropTable(
                 name: "IDs_Sistemas");
 
             migrationBuilder.DropTable(
                 name: "LogSistema");
+
+            migrationBuilder.DropTable(
+                name: "ManufacturerTables");
 
             migrationBuilder.DropTable(
                 name: "SetorProprietarios");

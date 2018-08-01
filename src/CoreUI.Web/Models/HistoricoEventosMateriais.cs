@@ -29,7 +29,7 @@ namespace CoreUI.Web.Models
 
         public String Almoxarifado { get; set; }
 
-        public String Posicao { get; set; }
+        public String CodigoPosicao { get; set; }
 
         public String TAGID { get; set; }
 

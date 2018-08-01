@@ -18,7 +18,7 @@ namespace CoreUI.Web.Models
         public String NomeFabricante { get; set; }
 
         [ForeignKey("Empresa")]
-        public int EmpresaId { get; set; }
+        public int? EmpresaId { get; set; }
         public virtual Empresa Empresa { get; set; }
 
     }

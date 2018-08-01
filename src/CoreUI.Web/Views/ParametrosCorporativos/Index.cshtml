@@ -1,0 +1,86 @@
+﻿@model ParametrosCorporativosViewModel
+
+@{
+    ViewData["Title"] = "Parametros - Corporativos";
+}
+
+<div class="col">
+    <div class="row">
+        <div class="col-md-4 table-responsive">
+            <div>
+                @Html.Partial("ListEmpresas", Model.Empresas)
+            </div>
+        </div>
+
+        <div class="col-md-4 table-responsive">
+            <div>
+                @Html.Partial("ListSetorProprietario", Model.Setores)
+            </div>
+        </div>
+
+        <div class="col-md-4 table-responsive">
+            <div>
+                @Html.Partial("ListFabricantes", Model.Fabricantes)
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 table-responsive">
+            <div>
+                @Html.Partial("ListContratos", Model.Contratos)
+            </div>
+        </div>
+
+        <div class="col-md-4 table-responsive">
+            <div>
+                @Html.Partial("ListGrupos", Model.Grupos)
+            </div>
+        </div>
+
+        <div class="col-md-4 table-responsive">
+            <div>
+                @Html.Partial("ListPermissao", Model.Permissoes)
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 table-responsive">
+            <div>
+                @Html.Partial("ListPermissaoUsuario", Model.PermissoesUsuarios)
+            </div>
+        </div>
+
+        <div class="col-md-4 table-responsive">
+            <div>
+                @Html.Partial("ListPermissaoUsuario", Model.PermissoesUsuarios)
+            </div>
+        </div>
+
+        <div class="col-md-4 table-responsive">
+            <div>
+                @Html.Partial("ListRequisicoes", Model.Requisicoes)
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 table-responsive">
+            <div>
+                @Html.Partial("ListPurchaseOrders", Model.PurchaseOrders)
+            </div>
+        </div>
+
+        <div class="col-md-6 table-responsive">
+            <div>
+                @Html.Partial("ListIdentificacaoSistema", Model.IdSistemas)
+            </div>
+        </div>
+
+    </div>
+
+</div>

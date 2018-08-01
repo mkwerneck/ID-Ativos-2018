@@ -1,0 +1,29 @@
+﻿@model PurchaseOrder
+
+@{
+    ViewData["Title"] = "Adicionar Novo Ordem de Compras";
+}
+
+<form method="post" asp-action="AddPurchaseOrder" enctype="multipart/form-data">
+
+    <div class="card">
+        <div class="card-header">
+            <strong>Adicionar Novo Ordem de Compras</strong>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label asp-for="PO" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="PO" class="form-control" />
+                    <span asp-validation-for="PO" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="OK" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+</form>

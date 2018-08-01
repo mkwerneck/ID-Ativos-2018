@@ -1,0 +1,22 @@
+﻿@model  ParametrosEmailsViewModel
+    
+@{
+    ViewData["Title"] = "Parametros - E-mail";
+}
+
+<div class="col">
+    <div class="row">
+        <div class="col-md-6 table-responsive">
+            <div>
+                @Html.Partial("ListCategoriaEmails", Model.categoriasEmail)
+            </div>
+        </div>
+
+        <div class="col-md-6 table-responsive">
+            <div>
+                @Html.Partial("ListSendEmails", Model.sendsEmail)
+            </div>
+        </div>
+
+    </div>
+</div>

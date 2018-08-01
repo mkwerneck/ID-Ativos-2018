@@ -1,0 +1,45 @@
+﻿@model AddEditSendEmail
+
+@{
+    ViewData["Title"] = "Adicionar E-mail";
+}
+
+<form method="post" asp-action="AddSendEmails" enctype="multipart/form-data">
+
+    <div class="card">
+        <div class="card-header">
+            <strong>Nova E-mail</strong>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label asp-for="sendEmail.Identificacao" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="sendEmail.Identificacao" class="form-control" />
+                    <span asp-validation-for="sendEmail.Identificacao" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="sendEmail.Email" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="sendEmail.Email" class="form-control" />
+                    <span asp-validation-for="sendEmail.Email" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="sendEmail.CategoriaEmail" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    @Html.DropDownListFor(p => p.sendEmail.CategoriaEmailId, new SelectList(Model.categoriasEmail.ToList(), "Id", "Assunto"), new { @class = "form-control" })
+                    <span asp-validation-for="sendEmail.CategoriaEmail" class="text-danger"></span>
+                </div>
+            </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="OK" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+</form>

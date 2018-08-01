@@ -1,0 +1,78 @@
+﻿@model CategoriaEmail
+
+@{
+    ViewData["Title"] = "Adicionar Categoria de E-mail";
+}
+
+<form method="post" asp-action="AddCategoriaEmail" enctype="multipart/form-data">
+
+    <div class="card">
+        <div class="card-header">
+            <strong>Nova Categoria de E-mail</strong>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label asp-for="NomeCategoria" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="NomeCategoria" class="form-control" />
+                    <span asp-validation-for="NomeCategoria" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Assunto" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="Assunto" class="form-control" />
+                    <span asp-validation-for="Assunto" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EmailDestinatario" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="EmailDestinatario" class="form-control" />
+                    <span asp-validation-for="EmailDestinatario" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SMTP" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="SMTP" class="form-control" />
+                    <span asp-validation-for="SMTP" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NomeRemetente" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="NomeRemetente" class="form-control" />
+                    <span asp-validation-for="NomeRemetente" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EmailRemetente" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="EmailRemetente" class="form-control" />
+                    <span asp-validation-for="EmailRemetente" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SenhaRemetente" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="SenhaRemetente" class="form-control" />
+                    <span asp-validation-for="SenhaRemetente" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="OK" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+</form>

@@ -10,13 +10,21 @@ namespace CoreUI.Web.Models
         [Required]
         public int Id { get; set; }
 
-        [Required]
-        [StringLength(255)]
-        [DisplayName("Título")]
-        [Column(name:"Titulo_Grupo")]
+        [Required] [DisplayName("Título")]
         public String Titulo { get; set; }
 
-        public String ApplicationUserId { get; set; }
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        [DisplayName("Custo Operacional Diário")]
+        public decimal? CustoOperacionalDiario { get; set; }
+
+        public decimal? CustoOperacionalMensal { get; set; }
+
+        [DisplayName("Depreciação Mensal")]
+        public decimal? DepreciacaoMensal { get; set; }
+
+        public decimal? DepreciacaoDiaria { get; set; }
+
+        [DisplayName("Usuário Gestor")]
+        public int? PermissaoUsuarioId { get; set; }
+        public virtual PermissaoUsuario PermissaoUsuario {get; set;}
     }
 }

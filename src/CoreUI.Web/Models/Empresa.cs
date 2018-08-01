@@ -13,7 +13,7 @@ namespace CoreUI.Web.Models
 
         [Required]
         [StringLength(255)]
-        [DisplayName("Nome Fantasia")]
+        [DisplayName("Empresa")]
         public String NomeFantasia { get; set; }
 
         [Required]
@@ -33,9 +33,9 @@ namespace CoreUI.Web.Models
         [DisplayName("Inscrição Municipal")]
         public String InscricaoMunicipal { get; set; }
 
-        public int CNAE { get; set; }
+        public int? CNAE { get; set; }
 
-        public int CRT { get; set; }
+        public int? CRT { get; set; }
 
     }
 }

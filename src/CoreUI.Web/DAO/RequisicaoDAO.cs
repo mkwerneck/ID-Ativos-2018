@@ -17,9 +17,9 @@ namespace CoreUI.Web.DAO
             _context = context;
         }
 
-        public async Task<ICollection<Posicao>> Listar()
+        public async Task<ICollection<Requisicao>> Listar()
         {
-            return await _context.Posicoes.ToListAsync();
+            return await _context.Requisicoes.ToListAsync();
         }
 
         public async Task Create(Requisicao requisicao)
@@ -38,6 +38,14 @@ namespace CoreUI.Web.DAO
         {
             _context.Update(requisicao);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<Requisicao> GetById(int? id)
+        {
+            Requisicao requisicao = await _context.Requisicoes
+                .AsNoTracking()
+                .SingleOrDefaultAsync(p => p.Id == id);
+            return requisicao;
         }
 
     }

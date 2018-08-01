@@ -11,8 +11,8 @@ using System;
 namespace CoreUI.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180613140401_Imagem")]
-    partial class Imagem
+    [Migration("20180717121906_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -115,6 +115,43 @@ namespace CoreUI.Web.Migrations
                     b.HasIndex("EstadoId");
 
                     b.ToTable("Cidades");
+                });
+
+            modelBuilder.Entity("CoreUI.Web.Models.Documentacao", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DataCadastro");
+
+                    b.Property<DateTime>("DataCancelado");
+
+                    b.Property<DateTime>("DataEmissao");
+
+                    b.Property<DateTime>("DataImpressao");
+
+                    b.Property<DateTime>("DataValidade");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired();
+
+                    b.Property<long>("NumCertificado");
+
+                    b.Property<string>("NumCertificadoString");
+
+                    b.Property<string>("Obsrevacao");
+
+                    b.Property<string>("Status");
+
+                    b.Property<string>("UsuarioCadastro");
+
+                    b.Property<string>("UsuarioCancelamento");
+
+                    b.Property<string>("UsuarioEmissor");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Documentacaos");
                 });
 
             modelBuilder.Entity("CoreUI.Web.Models.Empresa", b =>

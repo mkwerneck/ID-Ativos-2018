@@ -17,9 +17,9 @@ namespace CoreUI.Web.DAO
             _context = context;
         }
 
-        public async Task<ICollection<Posicao>> Listar()
+        public async Task<ICollection<CategoriaEmail>> Listar()
         {
-            return await _context.Posicoes.ToListAsync();
+            return await _context.CategoriaEmails.ToListAsync();
         }
 
         public async Task Create(CategoriaEmail categoriaEmail)
@@ -38,6 +38,12 @@ namespace CoreUI.Web.DAO
         {
             _context.Update(categoriaEmail);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<CategoriaEmail> GetById(int id)
+        {
+            CategoriaEmail categoria = await _context.CategoriaEmails.Where(p => p.Id == id).SingleOrDefaultAsync();
+            return categoria;
         }
     }
 }

@@ -1,0 +1,29 @@
+﻿@model Requisicao
+
+@{
+    ViewData["Title"] = "Adicionar Novo Autorização de Serviço";
+}
+
+<form method="post" asp-action="AddRequisicao" enctype="multipart/form-data">
+
+    <div class="card">
+        <div class="card-header">
+            <strong>Adicionar Novo Autorização de Serviço</strong>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label asp-for="RQ" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="RQ" class="form-control" />
+                    <span asp-validation-for="RQ" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="OK" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+</form>

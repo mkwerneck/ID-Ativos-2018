@@ -17,9 +17,15 @@ namespace CoreUI.Web.DAO
             _context = context;
         }
 
-        public async Task<ICollection<Posicao>> Listar()
+        public async Task<ICollection<Documentacao>> Listar()
         {
-            return await _context.Posicoes.ToListAsync();
+            return await _context.Documentacoes.ToListAsync();
+        }
+
+        //voltar para asincrono apos testes
+        public async Task <Documentacao> GetItemById(int id)
+        {
+            return await _context.Documentacoes.Where(p => p.Id == id).SingleAsync();
         }
 
         public async Task Create(Documentacao documentacao)

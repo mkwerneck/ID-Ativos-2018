@@ -1,0 +1,30 @@
+﻿@model TAGIDEquipment
+
+@{
+    ViewData["Title"] = "Editar TAGID";
+}
+
+<form method="post" asp-action="EditTAGIDEquipment" enctype="multipart/form-data">
+
+    <div class="card">
+        <div class="card-header">
+            <strong>Editar TAGID</strong>
+        </div>
+        <div class="card-body">
+            <label asp-for="Id" hidden></label>
+            <div class="form-group">
+                <label asp-for="TAGID" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="TAGID" class="form-control" />
+                    <span asp-validation-for="TAGID" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="OK" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+</form>

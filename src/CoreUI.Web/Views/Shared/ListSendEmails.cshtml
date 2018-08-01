@@ -1,0 +1,86 @@
+﻿@model IEnumerable<SendEmail>
+
+<div class="row my-3 px-3">
+    <a asp-action="AddSendEmails" class="btn btn-primary btn-sm">
+        <i class="fa fa-plus"></i>
+    </a>
+</div>
+
+</div>
+<div>
+    <div>
+        <i class="fa fa-align-justify"></i>
+        Lista E-mails - Categorias de Envio de E-mails
+    </div>
+    <br />
+    <div>
+        <table class="table table-sm">
+            <thead class="thead-light">
+                <tr>
+                    <th class="nowrap">Identificação</th>
+                    <th class="nowrap">E-mail</th>
+                    <th class="nowrap"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="nowrap">
+                            @Html.DisplayFor(modelItem => item.Identificacao)
+                        </td>
+                        <td class="nowrap">
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td class="nowrap">
+                            <a asp-action="EditSendEmails" asp-route-id="@item.Id" class="btn btn-info btn-sm">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a asp-action="DeleteSendEmails" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
+                                <i class="fa fa-minus"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style type="text/css">
+    .nowrap {
+        white-space: nowrap;
+    }
+</style>
+
+@*<table class="table table-bordered table-sm">
+        <thead class="thead-light">
+            <tr>
+                <th class="custom-header">
+                    Lista E-mails - Categorias de Envio de E-mails
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Identificacao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        <a asp-action="EditSendEmails" asp-route-id="@item.Id" class="btn btn-info btn-sm">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a asp-action="DeleteSendEmails" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
+                            <i class="fa fa-minus"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>*@

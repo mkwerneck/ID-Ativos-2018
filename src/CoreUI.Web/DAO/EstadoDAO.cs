@@ -19,7 +19,8 @@ namespace CoreUI.Web.DAO
 
         public async Task<ICollection<Estado>> Listar()
         {
-            return await _context.Estados.ToListAsync();
+            return await _context.Estados
+                .ToListAsync();
         }
 
         public async Task Create(Estado estado)

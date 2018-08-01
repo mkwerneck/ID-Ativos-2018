@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ModeloEquipamentos>
+
+<div class="row my-3 px-3">
+    <a asp-action="AddModeloEquipamento" class="btn btn-primary btn-sm">
+        <i class="fa fa-plus"></i>
+    </a>
+</div>
+<div>
+    <div>
+        <i class="fa fa-align-justify"></i>
+        Modelo de Ativos
+    </div>
+    <br />
+    <div>
+        <table class="table table-sm">
+            <thead class="thead-light">
+                <tr>
+                    <th class="nowrap">Modelo do Equipamento</th>
+                    <th class="nowrap">Descrição</th>
+                    <th class="nowrap">Part Number</th>
+                    <th class="nowrap">Fabricante</th>
+                    <th class="nowrap"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td class="nowrap">
+                        @Html.DisplayFor(modelItem => item.Modelo)
+                    </td>
+                    <td class="nowrap">
+                        @Html.DisplayFor(modelItem => item.DescricaoTecnica)
+                    </td>
+                    <td class="nowrap">
+                        @Html.DisplayFor(modelItem => item.PartNumber)
+                    </td>
+                    <td class="nowrap">
+                        @Html.DisplayFor(modelItem => item.Fabricante.NomeFabricante)
+                    </td>
+                    <td class="nowrap float-right">
+                        <a asp-action="EditModeloEquipamento" asp-route-id="@item.Id" class="btn btn-info btn-sm">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a asp-action="DeleteModeloEquipamento" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
+                            <i class="fa fa-minus"></i>
+                        </a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style type="text/css">
+    .nowrap {
+        white-space: nowrap;
+    }
+
+    .alnright {
+    }
+</style>

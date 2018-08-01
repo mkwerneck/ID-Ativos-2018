@@ -1,0 +1,105 @@
+﻿@model  IEnumerable<CategoriaEmail>
+
+<div class="row my-3 px-3">
+    <a asp-action="AddCategoriaEmail" class="btn btn-primary btn-sm">
+        <i class="fa fa-plus"></i>
+    </a>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <i class="fa fa-align-justify"></i>
+        Categoria E-mail
+    </div>
+    <br/>
+    <div class="panel-body">
+        <table class="table table-sm">
+            <thead class="thead-light">
+                <tr>
+                    <th class="nowrap">Categoria</th>
+                    <th class="nowrap">Assunto E-mail</th>
+                    <th class="nowrap">Nome Remetente</th>
+                    <th class="nowrap">E-mail Remetente</th>
+                    <th class="nowrap">SMTP</th>
+                    <th class="nowrap"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td class="nowrap">
+                        @Html.DisplayFor(modelItem => item.NomeCategoria)
+                    </td>
+                    <td class="nowrap">
+                        @Html.DisplayFor(modelItem => item.Assunto)
+                    </td>
+                    <td class="nowrap">
+                        @Html.DisplayFor(modelItem => item.NomeRemetente)
+                    </td>
+                    <td class="nowrap">
+                        @Html.DisplayFor(modelItem => item.EmailRemetente)
+                    </td>
+                    <td class="nowrap">
+                        @Html.DisplayFor(modelItem => item.SMTP)
+                    </td>
+                    <td class="nowrap">
+                        <a asp-action="EditCategoriaEmails" asp-route-id="@item.Id" class="btn btn-info btn-sm">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a asp-action="DeleteCategoriaEmails" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
+                            <i class="fa fa-minus"></i>
+                        </a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style type="text/css">
+    .nowrap {
+        white-space: nowrap;
+    }
+</style>
+
+    @*@<table class="table table-bordered table-sm">
+        <thead class="thead-light">
+            <tr>
+                <th class="custom-header">
+                    Categorias E-mail
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NomeCategoria)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Assunto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NomeRemetente)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmailRemetente)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SMTP)
+                    </td>
+                    <td>
+                        <a asp-action="EditCategoriaEmails" asp-route-id="@item.Id" class="btn btn-info btn-sm">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a asp-action="DeleteCategoriaEmails" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
+                            <i class="fa fa-minus"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>*@

@@ -1,0 +1,109 @@
+﻿@model AddEditIdSistemaViewModel
+
+@{
+    ViewData["Title"] = "Adicionar Novo Ids Sistema";
+}
+
+<form method="post" asp-action="AddIdSistema" enctype="multipart/form-data">
+
+    <div class="card">
+        <div class="card-header">
+            <strong>Adicionar Novo Ids Sistema</strong>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label asp-for="IdSistema.IDSistema" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="IdSistema.IDSistema" class="form-control" />
+                    <span asp-validation-for="IdSistema.IDSistema" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IdSistema.DominioPrincipal" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="IdSistema.DominioPrincipal" class="form-control" />
+                    <span asp-validation-for="IdSistema.DominioPrincipal" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IdSistema.DominioMobile" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="IdSistema.DominioMobile" class="form-control" />
+                    <span asp-validation-for="IdSistema.DominioMobile" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IdSistema.EnderecoIntegracoes" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="IdSistema.EnderecoIntegracoes" class="form-control" />
+                    <span asp-validation-for="IdSistema.EnderecoIntegracoes" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IdSistema.Versao" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="IdSistema.Versao" class="form-control" />
+                    <span asp-validation-for="IdSistema.Versao" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IdSistema.Localizacao" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <select asp-for="IdSistema.Localizacao" class="form-control" asp-items="ViewBag.LocalizacaoId">
+                        <option value="">--Selecione--</option>
+                    </select>
+                    <span asp-validation-for="IdSistema.Localizacao" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IdSistema.LogoWeb" class="col-md-6 col-form-label"></label>
+                    <div class="btn btn-primary col-md-6">
+                        <input type="file" name="ImgLogoWeb" />
+                    </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IdSistema.LogoMobile" class="col-md-6 col-form-label"></label>
+                <div class="btn btn-primary col-md-6">
+                    <input type="file" name="ImgLogoMobile" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IdSistema.ImagemPadrao" class="col-md-6 col-form-label"></label>
+                <div class="btn btn-primary col-md-6">
+                    <input type="file" name="ImgImagemPadrao" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IdSistema.loginAD" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="IdSistema.loginAD" class="form-control" />
+                    <span asp-validation-for="IdSistema.loginAD" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IdSistema.senhaAD" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="IdSistema.senhaAD" class="form-control" />
+                    <span asp-validation-for="IdSistema.senhaAD" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="OK" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+</form>

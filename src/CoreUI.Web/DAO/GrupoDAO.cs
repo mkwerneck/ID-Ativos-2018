@@ -17,9 +17,10 @@ namespace CoreUI.Web.DAO
             _context = context;
         }
 
-        public async Task<ICollection<Posicao>> Listar()
+        public async Task<ICollection<Grupo>> Listar()
         {
-            return await _context.Posicoes.ToListAsync();
+            return await _context.Grupos
+                .ToListAsync();
         }
 
         public async Task Create(Grupo grupo)
@@ -38,6 +39,15 @@ namespace CoreUI.Web.DAO
         {
             _context.Update(grupo);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<Grupo> GetById(int? id)
+        {
+            Grupo grupo = await _context.Grupos
+                .Include(p => p.PermissaoUsuario)
+                .AsNoTracking()
+                .SingleOrDefaultAsync(p => p.Id == id);
+            return grupo;
         }
 
     }

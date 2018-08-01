@@ -17,9 +17,9 @@ namespace CoreUI.Web.DAO
             _context = context;
         }
 
-        public async Task<ICollection<Posicao>> Listar()
+        public async Task<ICollection<Empresa>> Listar()
         {
-            return await _context.Posicoes.ToListAsync();
+            return await _context.Empresas.ToListAsync();
         }
 
         public async Task Create(Empresa empresa)
@@ -38,6 +38,12 @@ namespace CoreUI.Web.DAO
         {
             _context.Update(empresa);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<Empresa> GetById(int? id)
+        {
+            Empresa empresa = await _context.Empresas.Where(p => p.Id == id).SingleOrDefaultAsync();
+            return empresa;
         }
 
     }

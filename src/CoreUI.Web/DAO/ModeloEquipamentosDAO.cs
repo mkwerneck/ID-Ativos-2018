@@ -17,9 +17,11 @@ namespace CoreUI.Web.DAO
             _context = context;
         }
 
-        public async Task<ICollection<Posicao>> Listar()
+        public async Task<ICollection<ModeloEquipamentos>> Listar()
         {
-            return await _context.Posicoes.ToListAsync();
+            return await _context.ModelosEquipamentos
+                .Include(p => p.Fabricante)
+                .ToListAsync();
         }
 
         public async Task Create(ModeloEquipamentos modeloEquipamentos)

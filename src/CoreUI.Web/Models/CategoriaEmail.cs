@@ -26,7 +26,7 @@ namespace CoreUI.Web.Models
         [Required][StringLength(255)] [DisplayName("SMTP")]
         public String SMTP { get; set; }
 
-        [Required][StringLength(255)][DisplayName("Remetente")]
+        [Required][StringLength(255)][DisplayName("Nome Remetente")]
         [Column(name: "Nome_Remetente")]
         public String NomeRemetente { get; set; }
 
@@ -34,7 +34,7 @@ namespace CoreUI.Web.Models
         [Column(name: "Email_Remetente")]
         public String EmailRemetente { get; set; }
 
-        [Required][StringLength(255)][DisplayName("Senha Remetente")]
+        [Required][StringLength(255)][DisplayName("Senha Remetente")][PasswordPropertyText]
         [Column(name: "Senha_Remetente")]
         public String SenhaRemetente { get; set; }
 

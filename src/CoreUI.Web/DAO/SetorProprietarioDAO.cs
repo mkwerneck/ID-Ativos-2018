@@ -17,9 +17,11 @@ namespace CoreUI.Web.DAO
             _context = context;
         }
 
-        public async Task<ICollection<Posicao>> Listar()
+        public async Task<ICollection<SetorProprietario>> Listar()
         {
-            return await _context.Posicoes.ToListAsync();
+            return await _context.SetorProprietarios
+                .Include(p => p.Empresa)
+                .ToListAsync();
         }
 
         public async Task Create(SetorProprietario setorProprietario)
@@ -38,6 +40,15 @@ namespace CoreUI.Web.DAO
         {
             _context.Update(setorProprietario);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<SetorProprietario> GetById(int? id)
+        {
+            SetorProprietario setorProprietario = await _context.SetorProprietarios
+                .Include(p => p.Empresa)
+                .AsNoTracking()
+                .SingleOrDefaultAsync(p => p.Id == id);
+            return setorProprietario;
         }
 
     }

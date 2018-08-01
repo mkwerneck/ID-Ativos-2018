@@ -17,9 +17,10 @@ namespace CoreUI.Web.DAO
             _context = context;
         }
 
-        public async Task<ICollection<Posicao>> Listar()
+        public async Task<ICollection<Fabricante>> Listar()
         {
-            return await _context.Posicoes.ToListAsync();
+            return await _context.Fabricantes
+                .ToListAsync();
         }
 
         public async Task Create(Fabricante fabricante)
@@ -40,5 +41,13 @@ namespace CoreUI.Web.DAO
             await _context.SaveChangesAsync();
         }
 
+        public async Task<Fabricante> GetById(int? id)
+        {
+            Fabricante fabricante = await _context.Fabricantes
+                .Include(p => p.Empresa)
+                .AsNoTracking()
+                .SingleOrDefaultAsync(p => p.Id == id);
+            return fabricante;
+        }
     }
 }

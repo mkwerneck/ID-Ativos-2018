@@ -1,0 +1,59 @@
+﻿@model Grupo
+
+@{
+    ViewData["Title"] = "Editar Grupo";
+}
+
+<form method="post" asp-action="EditGrupo" enctype="multipart/form-data">
+
+    <div class="card">
+        <div class="card-header">
+            <strong>Editar Grupo</strong>
+        </div>
+        <div class="card-body">
+            <label asp-for="Id" hidden></label>
+            <label asp-for="CustoOperacionalMensal" hidden></label>
+            <label asp-for="DepreciacaoDiaria" hidden></label>
+            <div class="form-group">
+                <label asp-for="Titulo" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="Titulo" class="form-control" />
+                    <span asp-validation-for="Titulo" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CustoOperacionalDiario" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="CustoOperacionalDiario" class="form-control" />
+                    <span asp-validation-for="CustoOperacionalDiario" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PermissaoUsuario" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <select asp-for="PermissaoUsuarioId" class="form-control" asp-items="ViewBag.PermissaoUsuarioId">
+                        <option value="">--Selecione--</option>
+                    </select>
+                    <span asp-validation-for="PermissaoUsuarioId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DepreciacaoMensal" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="DepreciacaoMensal" class="form-control" />
+                    <span asp-validation-for="DepreciacaoMensal" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="OK" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+</form>

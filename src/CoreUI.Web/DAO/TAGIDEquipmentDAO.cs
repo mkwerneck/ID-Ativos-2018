@@ -17,9 +17,9 @@ namespace CoreUI.Web.DAO
             _context = context;
         }
 
-        public async Task<ICollection<Posicao>> Listar()
+        public async Task<ICollection<TAGIDEquipment>> Listar()
         {
-            return await _context.Posicoes.ToListAsync();
+            return await _context.TAGIDEquipamentos.ToListAsync();
         }
 
         public async Task Create(TAGIDEquipment tAGIDEquipment)
@@ -38,6 +38,14 @@ namespace CoreUI.Web.DAO
         {
             _context.Update(tAGIDEquipment);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<TAGIDEquipment> GetById(int? id)
+        {
+            TAGIDEquipment tagidEquipment = await _context.TAGIDEquipamentos
+                .AsNoTracking()
+                .SingleOrDefaultAsync(p => p.Id == id);
+            return tagidEquipment;
         }
 
     }

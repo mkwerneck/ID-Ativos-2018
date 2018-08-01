@@ -5,8 +5,22 @@
     <UserSecretsId>aspnet-CoreUI.Web-6682341B-F32F-461F-A70E-AEA280C8A402</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="wwwroot\bin\**" />
+    <Content Remove="wwwroot\bin\**" />
+    <EmbeddedResource Remove="wwwroot\bin\**" />
+    <None Remove="wwwroot\bin\**" />
+  </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20180731120239_ParametrosCorporativos.cs" />
+    <Compile Remove="Migrations\20180731120239_ParametrosCorporativos.Designer.cs" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="DotNetCore.NPOI" Version="1.0.2" />
+    <PackageReference Include="iTextSharp-LGPL" Version="4.1.6" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.3" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4" PrivateAssets="All" />

@@ -1,0 +1,78 @@
+﻿@model PermissaoUsuario
+
+@{
+    ViewData["Title"] = "Editar Habilitação de Usuários";
+}
+
+<form method="post" asp-action="EditPermissaoUsuario" enctype="multipart/form-data">
+
+    <div class="card">
+        <div class="card-header">
+            <strong>Editar Habilitação de Usuários</strong>
+        </div>
+        <div class="card-body">
+
+            <label asp-for="Id" hidden></label>
+            <label asp-for="DuracaoExpediente" hidden></label>
+
+            <div class="form-group">
+                <label asp-for="Usuario" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="Usuario" class="form-control" />
+                    <span asp-validation-for="Usuario" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Permissao" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <select asp-for="PermissaoId" class="form-control" asp-items="ViewBag.PermissaoId">
+                        <option value="">--Selecione--</option>
+                    </select>
+                    <span asp-validation-for="PermissaoId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EmailUsuario" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="EmailUsuario" class="form-control" />
+                    <span asp-validation-for="EmailUsuario" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NomeCompleto" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="NomeCompleto" class="form-control" />
+                    <span asp-validation-for="NomeCompleto" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Grupo" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <select asp-for="GrupoId" class="form-control" asp-items="ViewBag.GrupoId">
+                        <option value="">--Selecione--</option>
+                    </select>
+                    <span asp-validation-for="GrupoId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="TAGID" class="col-md-6 col-form-label"></label>
+                <div class="col-md-6">
+                    <input asp-for="TAGID" class="form-control" />
+                    <span asp-validation-for="TAGID" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="OK" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+</form>

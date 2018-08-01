@@ -36,7 +36,7 @@ namespace CoreUI.Web.DAO
 
         public async Task Edit(CadastroMateriais cadastroMateriais)
         {
-            _context.Update(CadastroMateriais);
+            _context.Update(cadastroMateriais);
             await _context.SaveChangesAsync();
         }
 

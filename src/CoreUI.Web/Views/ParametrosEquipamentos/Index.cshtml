@@ -1,0 +1,36 @@
+﻿@model ParametrosEquipamentosViewModel
+
+@{
+    ViewData["Title"] = "Parametros - Equipamentos";
+}
+
+<div class="col">
+    <div class="row">
+        <div class="col-md-6 table-responsive">
+            <div>
+                @Html.Partial("ListTAGIDEquipment", Model.TAGIDEquipamentos)
+            </div>
+        </div>
+
+        <div class="col-md-6 table-responsive">
+            <div>
+                @Html.Partial("ListGPSIDEquipament", Model.GPSIDEquipamentos)
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 table-responsive">
+            <div>
+                @Html.Partial("ListCategoriaEquipamentos", Model.CategoriasEquipamentos)
+            </div>
+        </div>
+
+        <div class="col-md-6 table-responsive">
+            <div>
+                @Html.Partial("ListModeloEquipamento", Model.ModelosEquipamentos)
+            </div>
+        </div>
+    </div>
+
+</div>

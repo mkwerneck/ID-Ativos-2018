@@ -27,7 +27,26 @@ namespace CoreUI.Web.Data
         public DbSet<Posicao> Posicoes { get; set; }
         public DbSet<TAGIDPosicao> TAGIDsPosicao { get; set; }
         public DbSet<IdentificacaoSistema> IdentificacaoSistemas { get; set; }
+        public DbSet<Documentacao> Documentacoes { get; set; }
         
+        //Parametros-Email
+        public DbSet<CategoriaEmail> CategoriaEmails { get; set; }
+        public DbSet<SendEmail> SendEmails { get; set; }
+        
+        //Parametros-Corporativos
+        public DbSet<Contrato> Contratos { get; set; }
+        public DbSet<Grupo> Grupos { get; set; }
+        public DbSet<Permissao> Permissoes { get; set; }
+        public DbSet<PermissaoUsuario> PermissoesUsuario { get; set; }
+        public DbSet<PermissaoHabilitacao> PermissoesHabilitacao { get; set; }
+        public DbSet<Requisicao> Requisicoes { get; set; }
+        public DbSet<PurchaseOrder> PurchaseOrders { get; set; }
+
+        //Parametros-Equipamentos
+        public DbSet<TAGIDEquipment> TAGIDEquipamentos { get; set; }
+        public DbSet<GPSIDEquipment> GPSIDEquipamentos { get; set; }
+        public DbSet<ModeloEquipamentos> ModelosEquipamentos { get; set; }
+        public DbSet<CategoriaEquipamentos> CategoriaEquipamentos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -48,6 +67,16 @@ namespace CoreUI.Web.Data
 
             builder.Entity<Localizacao>()
                 .HasOne(l => l.Empresa)
+                .WithMany()
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Grupo>()
+                .HasOne(a => a.PermissaoUsuario)
+                .WithOne(b => b.Grupo)
+                .HasForeignKey<PermissaoUsuario>(b => b.GrupoId);
+
+            builder.Entity<PermissaoHabilitacao>()
+                .HasOne(l => l.SetorProprietario)
                 .WithMany()
                 .OnDelete(DeleteBehavior.Restrict);
 

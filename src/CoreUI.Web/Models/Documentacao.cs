@@ -12,12 +12,15 @@ namespace CoreUI.Web.Models
         [Required]
         public int Id { get; set; }
 
+        [Required]
+        public String Descricao { get; set; }
+
         public String Status { get; set; }
 
         [Required]
         public DateTime DataCadastro { get; set; }
 
-        public DateTime DataEmissa { get; set; }
+        public DateTime DataEmissao { get; set; }
 
         public DateTime DataValidade { get; set; }
 
@@ -38,9 +41,9 @@ namespace CoreUI.Web.Models
 
         public String NumCertificadoString { get; set; }
 
-        [ForeignKey("WorksheetControl")]
-        public int WorksheetControlId { get; set; }
-        public virtual WorksheetControl WorksheetControl { get; set; }
+        //[ForeignKey("WorksheetControl")]
+        //public int WorksheetControlId { get; set; }
+        //public virtual WorksheetControl WorksheetControl { get; set; }
 
         //S
     }

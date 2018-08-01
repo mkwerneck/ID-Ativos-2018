@@ -17,9 +17,10 @@ namespace CoreUI.Web.DAO
             _context = context;
         }
 
-        public async Task<ICollection<Posicao>> Listar()
+        public async Task<ICollection<CategoriaEquipamentos>> Listar()
         {
-            return await _context.Posicoes.ToListAsync();
+            return await _context.CategoriaEquipamentos
+                .ToListAsync();
         }
 
         public async Task Create(CategoriaEquipamentos categoriaEquipamentos)
@@ -40,5 +41,12 @@ namespace CoreUI.Web.DAO
             await _context.SaveChangesAsync();
         }
 
+        public async Task<CategoriaEquipamentos> GetById(int? id)
+        {
+            CategoriaEquipamentos categoriaEquipamentos = await _context.CategoriaEquipamentos
+                .AsNoTracking()
+                .SingleOrDefaultAsync(p => p.Id == id);
+            return categoriaEquipamentos;
+        }
     }
 }
